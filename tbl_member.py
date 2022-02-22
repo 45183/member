@@ -44,8 +44,18 @@ def select_member():
         print(i)
     conn.close()
 
+def delete_member():
+    conn = getconn()
+    cur = conn.cursor()
+    sql = "DELETE FROM member WHERE mid = ?"
+    cur.execute(sql, ('cloud', ))
+    conn.commit()
+    conn.close()
+
+
 # conn = getconn()
 # print('접속', getconn())
 # creat_table()
 # insert_member()
-select_member()
+# select_member()
+# delete_member()
