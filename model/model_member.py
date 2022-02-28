@@ -63,6 +63,8 @@ def login_member():
 def delete_member(id):
     conn = getconn()
     cur = conn.cursor()
+    sql = "PRAGMA foreign_keys = ON;"               # sqlite3에서는 넣어줘야 외래키 작동 
+    cur.execute(sql)
     sql = "DELETE FROM member WHERE mid = '%s'" % (id)
     cur.execute(sql)
     conn.commit()

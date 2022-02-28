@@ -57,5 +57,5 @@ def delete_member():
 # print('접속', getconn())
 # creat_table()
 # insert_member()
-# select_member()
+select_member()
 # delete_member()
