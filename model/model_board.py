@@ -34,11 +34,11 @@ def write_board():
     content = request.form['content']
     hit = 0
     mid = session.get('userID')  # 로그인한 mid(작성자)
-
+    name = session.get('userName')
     # db 연동 처리
     conn = getconn()
     cur = conn.cursor()
-    sql = "INSERT INTO board(title, content, hit, mid) VALUES ('%s', '%s', '%s', '%s')" % (title, content, hit, mid)
+    sql = "INSERT INTO board(title, content, hit, mid, name) VALUES ('%s', '%s', '%s', '%s', '%s')" % (title, content, hit, mid, name)
     cur.execute(sql)
     conn.commit()
     conn.close()
@@ -55,11 +55,12 @@ def update_board(bno):
     # 데이터 전달받기
     title = request.form['title']
     content = request.form['content']
-    mid = session.get('userName')
+    mid = session.get('userID')
+    name = session.get('userName')
 
     conn = getconn()
     cur = conn.cursor()
-    sql = "UPDATE board SET title = '%s', content = '%s', mid = '%s' WHERE bno = '%s'" % (title, content, mid, bno)
+    sql = "UPDATE board SET title = '%s', content = '%s', mid = '%s', name = '%s' WHERE bno = '%s'" % (title, content, mid, name, bno)
     cur.execute(sql)
     conn.commit()
     conn.close()

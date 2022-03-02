@@ -59,9 +59,9 @@ def login():
 # 로그아웃 페이지
 @app.route('/logout/')
 def logout():
-    # session.pop("userID")                       # 세션 삭제
-    # session.pop("userName")
-    session.clear()                               # 모든 세션 삭제
+    session.pop("userID")                       # 세션 삭제
+    session.pop("userName")
+    # session.clear()                           # 모든 세션 삭제
     return redirect(url_for('index'))
 
 # 회원 삭제
